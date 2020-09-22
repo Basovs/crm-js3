@@ -1,11 +1,17 @@
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
-const Input = ({ type, placeholder }) => {
-  return <MyComponent type={type} placeholder={placeholder}></MyComponent>;
-};
+const Input = ({ type, placeholder, onChange }) => {
+  return (
+    <MyComponent
+      type={type}
+      placeholder={placeholder}
+      onChange={onChange}
+    ></MyComponent>
+  )
+}
 
-export default Input;
+export default Input
 
 const MyComponent = styled.input`
   block-size: 52px;
@@ -23,4 +29,4 @@ const MyComponent = styled.input`
     opacity: 1; /* Firefox */
     font-weight: 300;
   }
-`;
+`

@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import FlexWrapper from "../wrappers/FlexWrapper";
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
+import FlexWrapper from "../wrappers/FlexWrapper"
 
 const Nav = () => {
   return (
@@ -12,15 +12,15 @@ const Nav = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/create-user">Create user</Link>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </FlexWrapper>
     </MyComponent>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav
 
 const MyComponent = styled.nav`
   display: flex;
@@ -45,4 +45,4 @@ const MyComponent = styled.nav`
       }
     }
   }
-`;
+`

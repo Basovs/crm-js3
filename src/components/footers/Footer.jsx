@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
 const Footer = () => {
-  return <MyComponent>footer</MyComponent>;
-};
+  return <MyComponent></MyComponent>
+}
 
-export default Footer;
+export default Footer
 
-const MyComponent = styled.section``;
+const MyComponent = styled.section``
