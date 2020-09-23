@@ -1,9 +1,14 @@
 import React from "react"
+import CustomerList from "../components/admin/CustomerList"
+import FlexWrapper from "../components/wrappers/FlexWrapper"
 
 const AdminPage = () => {
   return (
     <div>
-      <h2>AdminPage</h2>
+      <FlexWrapper>
+        <h2>AdminPage</h2>
+        <CustomerList />
+      </FlexWrapper>
     </div>
   )
 }

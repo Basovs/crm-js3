@@ -1,9 +1,8 @@
 import React, { useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import UserKit from "../../data/UserKit"
 import FilledButton from "../buttons/FilledButton"
 import Input from "../inputs/Input"
-import FlexWrapper from "../wrappers/FlexWrapper"
 import styled from "styled-components"
 
 const ActivateForm = ({ uid, code }) => {
@@ -19,34 +18,53 @@ const ActivateForm = ({ uid, code }) => {
       .then((res) => res.json())
       .then((data) => {
         userKit.setToken(data.token)
-        history.push("/home")
+        history.push("/admin")
       })
   }
 
   return (
-    <div>
-      <MyFlexWrapper>
-        <h1>Login</h1>
-        <Input
-          type="text"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <Input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <FilledButton title="Login" onClick={handleLogin} />
-      </MyFlexWrapper>
-    </div>
+    <MyComponent>
+      <p>
+        Not a user yet? -{" "}
+        <Link to="/register">
+          <span>Register here</span>
+        </Link>
+      </p>
+
+      <h1>Login</h1>
+      <Input
+        type="text"
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+      />
+      <FilledButton title="Login" onClick={handleLogin} />
+    </MyComponent>
   )
 }
 
 export default ActivateForm
 
-const MyFlexWrapper = styled(FlexWrapper)`
+const MyComponent = styled.div`
+  display: flex;
   flex-direction: column;
+
+  inline-size: 100%;
+  max-inline-size: 400px;
+  padding: 30px 0;
+  h1 {
+    font-size: 22px;
+  }
+  p {
+    font-size: 14px;
+    a {
+      text-decoration: underline;
+    }
+  }
 `

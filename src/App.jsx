@@ -4,6 +4,7 @@ import MainLayout from "./components/layouts/MainLayout"
 import AdminPage from "./pages/AdminPage"
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
+import RegisterPage from "./pages/RegisterPage"
 import GlobalStyle from "./styles/globalStyles"
 
 function App() {
@@ -13,6 +14,12 @@ function App() {
         <MainLayout>
           <GlobalStyle />
           <AdminPage />
+        </MainLayout>
+      </Route>
+      <Route path="/register">
+        <MainLayout>
+          <GlobalStyle />
+          <RegisterPage />
         </MainLayout>
       </Route>
       <Route path="/login">

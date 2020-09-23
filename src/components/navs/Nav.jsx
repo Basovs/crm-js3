@@ -2,8 +2,13 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import FlexWrapper from "../wrappers/FlexWrapper"
+import UserKit from "../../data/UserKit"
 
 const Nav = () => {
+  const userKit = new UserKit()
+
+  const tokenExist = userKit.getToken()
+
   return (
     <MyComponent>
       <FlexWrapper>
@@ -11,9 +16,27 @@ const Nav = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          {!tokenExist ? (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/admin">Admin</Link>
+              </li>
+              <li>
+                <Link to="/" onClick={() => userKit.logout()}>
+                  Logout
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </FlexWrapper>
     </MyComponent>

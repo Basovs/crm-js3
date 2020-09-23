@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import LoginForm from "../components/forms/LoginForm"
 import UserKit from "../data/UserKit"
+import FlexWrapper from "../components/wrappers/FlexWrapper"
+import LoginForm from "../components/forms/LoginForm"
 
 const LoginPage = () => {
   const [uid, setUid] = useState(null)
@@ -25,15 +26,15 @@ const LoginPage = () => {
   }, [currentCode, currentUid])
 
   return (
-    <div>
+    <FlexWrapper>
       {uid && code ? (
-        <div>
+        <FlexWrapper>
           <h2>Your account is being activated</h2> {handleActivateAccount()}
-        </div>
+        </FlexWrapper>
       ) : (
         <LoginForm />
       )}
-    </div>
+    </FlexWrapper>
   )
 }
 

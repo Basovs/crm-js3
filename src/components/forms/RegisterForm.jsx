@@ -78,7 +78,7 @@ const MyComponent = styled.div`
 
   inline-size: 100%;
   max-inline-size: 400px;
-  padding: 50px 0;
+  padding: 30px 0;
   h1 {
     font-size: 22px;
   }
