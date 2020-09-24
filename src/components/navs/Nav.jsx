@@ -1,13 +1,14 @@
-import React from "react"
-import styled from "styled-components"
-import { Link } from "react-router-dom"
-import FlexWrapper from "../wrappers/FlexWrapper"
-import UserKit from "../../data/UserKit"
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import FlexWrapper from "../wrappers/FlexWrapper";
+import UserKit from "../../data/UserKit";
+import AboutMe from "../info/AboutMe";
 
 const Nav = () => {
-  const userKit = new UserKit()
+  const userKit = new UserKit();
 
-  const tokenExist = userKit.getToken()
+  const tokenExist = userKit.getToken();
 
   return (
     <MyComponent>
@@ -35,15 +36,18 @@ const Nav = () => {
                   Logout
                 </Link>
               </li>
+              <li>
+                <AboutMe />
+              </li>
             </>
           )}
         </ul>
       </FlexWrapper>
     </MyComponent>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
 
 const MyComponent = styled.nav`
   display: flex;
@@ -58,14 +62,12 @@ const MyComponent = styled.nav`
     li {
       margin: 0 0 0 20px;
       transition: opacity 0.15s ease-in;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.4px;
       :hover {
         opacity: 0.6;
       }
-      a {
-        font-weight: 500;
-        font-size: 14px;
-        letter-spacing: 0.4px;
-      }
     }
   }
-`
+`;

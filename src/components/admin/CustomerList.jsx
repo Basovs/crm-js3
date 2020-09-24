@@ -1,47 +1,68 @@
-import React, { useState, useEffect } from "react"
-import styled from "styled-components"
-import UserKit from "../../data/UserKit"
-import FilledButton from "../buttons/FilledButton"
+import React, { useEffect, useContext } from "react";
+import { Ctx } from "../../contexts/Ctx";
+import styled from "styled-components";
+import UserKit from "../../data/UserKit";
+import FilledButton from "../buttons/FilledButton";
 
 const CustomerList = () => {
-  const [customerList, setCustomerList] = useState(null)
-  const userKit = new UserKit()
+  const { customerList, setCustomerList } = useContext(Ctx);
+  const userKit = new UserKit();
 
   function fetchClients() {
     userKit
       .getCustomerList()
-      .then((res) => res.json())
-      .then((data) => {
-        setCustomerList(data.results)
-      })
+      .then(res => res.json())
+      .then(data => {
+        setCustomerList(data.results);
+      });
   }
 
-  function handleCreateCustomer() {
-    const payload = {
-      name: "My first client",
-    }
-    userKit
-      .createCustomer(payload)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data)
-        fetchClients()
-      })
-  }
+  const deleteClient = id => {
+    userKit.deleteCustomer(id).then(fetchClients);
+  };
 
   useEffect(() => {
-    fetchClients()
-  }, [])
+    fetchClients();
+  }, []);
+
   return (
     <MyComponent>
-      <FilledButton title="Create customer" onClick={handleCreateCustomer} />
-
       {customerList &&
-        customerList.map((item) => <p key={item.id}>{item.name}</p>)}
+        customerList.map((item, index) => (
+          <MyItem key={item.id}>
+            <p>{index + 1}</p>
+            <p>{item.name}</p>
+            <p>{item.id}</p>
+            <FilledButton
+              title="Delete"
+              onClick={() => {
+                deleteClient(item.id);
+              }}
+            />
+          </MyItem>
+        ))}
     </MyComponent>
-  )
-}
+  );
+};
 
-export default CustomerList
+export default CustomerList;
 
-const MyComponent = styled.div``
+const MyComponent = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+
+  inline-size: 100%;
+  max-inline-size: 400px;
+
+  h1 {
+    font-size: 22px;
+  }
+`;
+const MyItem = styled.div`
+  display: flex;
+  inline-size: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 5px 0;
+`;
