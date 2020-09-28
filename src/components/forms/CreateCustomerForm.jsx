@@ -42,7 +42,7 @@ const CreateCustomerForm = () => {
     userKit
       .createCustomer(payload)
       .then(res => res.json())
-      .then(fetchClients());
+      .then(fetchClients);
   }
 
   return (

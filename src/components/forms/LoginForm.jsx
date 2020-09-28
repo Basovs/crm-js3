@@ -1,31 +1,31 @@
-import React, { useState } from "react"
-import { useHistory, Link } from "react-router-dom"
-import UserKit from "../../data/UserKit"
-import FilledButton from "../buttons/FilledButton"
-import Input from "../inputs/Input"
-import styled from "styled-components"
+import React, { useState } from "react";
+import { useHistory, Link } from "react-router-dom";
+import UserKit from "../../data/UserKit";
+import FilledButton from "../buttons/FilledButton";
+import Input from "../inputs/Input";
+import styled from "styled-components";
 
 const ActivateForm = ({ uid, code }) => {
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
-  const userKit = new UserKit()
-  const history = useHistory()
+  const userKit = new UserKit();
+  const history = useHistory();
 
   function handleLogin() {
     userKit
       .login(email, password)
-      .then((res) => res.json())
-      .then((data) => {
-        userKit.setToken(data.token)
-        history.push("/admin")
-      })
+      .then(res => res.json())
+      .then(data => {
+        userKit.setToken(data.token);
+        history.push("/admin");
+      });
   }
 
   return (
     <MyComponent>
       <p>
-        Not a user yet? -{" "}
+        Not a user yet? -
         <Link to="/register">
           <span>Register here</span>
         </Link>
@@ -35,21 +35,21 @@ const ActivateForm = ({ uid, code }) => {
       <Input
         type="text"
         placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={e => setEmail(e.target.value)}
         value={email}
       />
       <Input
         type="password"
         placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={e => setPassword(e.target.value)}
         value={password}
       />
       <FilledButton title="Login" onClick={handleLogin} />
     </MyComponent>
-  )
-}
+  );
+};
 
-export default ActivateForm
+export default ActivateForm;
 
 const MyComponent = styled.div`
   display: flex;
@@ -67,4 +67,4 @@ const MyComponent = styled.div`
       text-decoration: underline;
     }
   }
-`
+`;

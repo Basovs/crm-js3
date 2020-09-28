@@ -53,12 +53,13 @@ const MyComponent = styled.nav`
   display: flex;
   align-items: center;
 
-  block-size: 50px;
+  padding: 20px 20px;
   border-bottom: 1px solid var(--stripe-color);
   background-color: #fff;
 
   ul {
     display: flex;
+    flex-wrap: wrap;
     li {
       margin: 0 0 0 20px;
       transition: opacity 0.15s ease-in;

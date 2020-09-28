@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -20,9 +20,7 @@ const GlobalStyle = createGlobalStyle`
     --mid-gray-color:#A1A3A5;
     --dark-gray-color:#231f20;
   }
-  body{
-    /* background-color: var(--body-background-color); */
-  }
+  
   button{
     border:none;
     cursor: pointer;
@@ -52,6 +50,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
 
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

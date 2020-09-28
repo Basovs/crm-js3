@@ -1,11 +1,11 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
 const FlexWrapper = ({ className, children }) => {
-  return <MyComponent className={className}>{children}</MyComponent>
-}
+  return <MyComponent className={className}>{children}</MyComponent>;
+};
 
-export default FlexWrapper
+export default FlexWrapper;
 
 const MyComponent = styled.div`
   display: flex;
@@ -17,4 +17,4 @@ const MyComponent = styled.div`
   max-inline-size: 1700px;
   margin: 0 auto;
   padding: 0 20px;
-`
+`;

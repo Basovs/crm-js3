@@ -1,33 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
 import UserKit from "../../data/UserKit";
+import { Ctx } from "../../contexts/Ctx";
 
-const AboutMe = () => {
-  const [meData, setMeData] = useState(null);
+const AboutUser = () => {
+  const { user, setUser } = useContext(Ctx);
 
   const userKit = new UserKit();
 
-  const aboutMe = () => {
+  const aboutUser = () => {
     return userKit
-      .getMe()
+      .getUser()
       .then(res => res.json())
-      .then(result => setMeData(result));
+      .then(result => setUser(result));
   };
 
   useEffect(() => {
-    aboutMe();
-  }, []);
+    aboutUser();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <MyComponent>
-      {meData && (
-        <p>{`Hello ${meData.firstName} ${meData.lastName} - ${meData.email}`}</p>
+      {user && (
+        <p>{`Hello ${user.firstName} ${user.lastName} - ${user.email}`}</p>
       )}
     </MyComponent>
   );
 };
 
-export default AboutMe;
+export default AboutUser;
 
 const MyComponent = styled.div`
   p {
