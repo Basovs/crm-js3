@@ -24,29 +24,28 @@ const CustomerList = () => {
 
   useEffect(() => {
     fetchClients();
-  }, [customerList]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    fetchClients();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <MyComponent>
-      {customerList &&
-        customerList.map((item, index) => (
-          <MyItem key={item.id}>
-            <Link to={`/customer/${item.id}`}>
-              <p>{index + 1}</p>
-              <p>{item.name}</p>
-            </Link>
-            <FilledButton
-              title="Delete"
-              onClick={() => {
-                deleteClient(item.id);
-              }}
-            />
-          </MyItem>
-        ))}
+      <h2>Customer List</h2>
+      <List>
+        {customerList &&
+          customerList.map((item, index) => (
+            <MyItem key={item.id}>
+              <Link to={`/customer/${item.id}`}>
+                <p>{index + 1}</p>
+                <p>{item.name}</p>
+              </Link>
+              <FilledButton
+                title="Delete"
+                onClick={() => {
+                  deleteClient(item.id);
+                }}
+              />
+            </MyItem>
+          ))}
+      </List>
     </MyComponent>
   );
 };
@@ -54,9 +53,6 @@ const CustomerList = () => {
 export default CustomerList;
 
 const MyComponent = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-
   inline-size: 100%;
   max-inline-size: 400px;
 
@@ -64,6 +60,12 @@ const MyComponent = styled.div`
     font-size: 22px;
   }
 `;
+
+const List = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+`;
+
 const MyItem = styled.div`
   display: flex;
   inline-size: 100%;

@@ -47,6 +47,7 @@ const CreateCustomerForm = () => {
 
   return (
     <MyComponent>
+      <h2>Create customer</h2>
       <Input
         type="text"
         placeholder="Name"
